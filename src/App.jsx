@@ -5,7 +5,7 @@ import { createContext } from 'react';
 import Main from './components/Main';
 import Koperasi from '../public/koperasi.png'
 import Movie from '../public/movie.png'
-import Inventory from '../public/Inventory.png'
+import Inventory from '../public/inventory.png'
 import Tiket from '../public/tiket.png'
 import Footer from './components/Footer';
 
