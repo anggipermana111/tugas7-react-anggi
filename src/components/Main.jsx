@@ -5,12 +5,13 @@ import { useContext } from 'react'
 
 const Main = () => {
   const { projects, theme } = useContext(ThemeContext)
+  const { strings, bahasa, setBahasa } = useContext(ThemeContext);
   return (
     <main className='py-3 px-5 md:px-14 lg:px-16 flex flex-col gap-10'>
       <section className='banner'>
         {/* Say Hallo */}
         <div className='flex flex-col gap-6'>
-          <h1 className='title'>Hi there, I'm <span className='text-blue-700'>Anggi</span> 👋</h1>
+          <h1 className='title'>{strings[bahasa].hi}<span className='text-blue-700'>Anggi</span> 👋</h1>
           <p className='text-lg lg:text-3xl'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos reprehenderit accusamus consequatur iure alias quas id distinctio voluptas ad et aliquid, reiciendis repellendus cupiditate. Quaerat dolores voluptas ad tempore ex!
           </p>
@@ -21,7 +22,7 @@ const Main = () => {
         </div>
       </section>
       <section className='flex flex-col gap-5 lg:gap-8'>
-        <h1 className='title'>My <span className='text-blue-700'>Projects</span></h1>
+        <h1 className='title'>My <span className='text-blue-700'>{strings[bahasa].project}</span></h1>
         <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:gap-10'>
           {
             projects.map((project) => {
@@ -39,7 +40,7 @@ const Main = () => {
                       </a>
                       {
                         project.view&& <a href={project.view} target='_blank'>
-                        <button className='w-32 h-10 bg-red-600 border-none rounded-3xl cursor-pointer'>View</button>
+                        <button className='w-32 h-10 bg-red-600 border-none rounded-3xl cursor-pointer'>{strings[bahasa].view}</button>
                     </a>
                       }
                     </div>

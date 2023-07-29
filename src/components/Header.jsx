@@ -4,7 +4,7 @@ import { ThemeContext } from '../App';
 import ThemeButton from './Theme'
 
 const Header = () => {
-    const { theme } = useContext(ThemeContext);
+    const { theme, strings, bahasa, setBahasa } = useContext(ThemeContext);
     return (
         <header className={`header-${theme} header`}>
             <h1 className="h1">My<span className='text-blue-700'>Portofolio</span></h1>
@@ -15,8 +15,19 @@ const Header = () => {
                     <li>LinkedIn</li>
                 </ul>
                 <div className='flex justify-end gap-5 items-center font-bold absolute top-3 right-4 md:static'>
-                    <span className='text-lg lg:text-3xl'>Theme : </span>
+                    <span className='text-lg lg:text-3xl'>{strings[bahasa].theme}</span>
                     <ThemeButton />
+                </div>
+                <div className='flex justify-end gap-5 items-center font-bold absolute top-3 right-4 md:static'>
+                    <span className='text-lg lg:text-3xl'>
+                        {
+                            strings[bahasa].language
+                        }
+                    </span>
+                    <button onClick={()=>{
+                        (bahasa=='id')?setBahasa('en'):setBahasa('id')
+                    }}>{strings[bahasa].country}
+                    </button>
                 </div>
             </nav>
         </header>
