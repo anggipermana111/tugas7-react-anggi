@@ -1,13 +1,12 @@
-import React from 'react'
 import Gambar from '../../public/man.png'
 import { ThemeContext } from '../App'
 import { useContext } from 'react'
+import Footer from './Footer';
 
 const Main = () => {
-  const { projects, theme } = useContext(ThemeContext)
-  const { strings, bahasa, setBahasa } = useContext(ThemeContext);
+  const { projects, theme, projectRef, strings, bahasa } = useContext(ThemeContext);
   return (
-    <main className='py-3 px-5 md:px-14 lg:px-16 flex flex-col gap-10'>
+    <main className='py-3 px-5 md:px-14 lg:px-16 flex flex-col gap-10 h-full overflow-y-auto'>
       <section className='banner'>
         {/* Say Hallo */}
         <div className='flex flex-col gap-6'>
@@ -22,7 +21,7 @@ const Main = () => {
         </div>
       </section>
       <section className='flex flex-col gap-5 lg:gap-8'>
-        <h1 className='title'>My <span className='text-blue-700'>{strings[bahasa].project}</span></h1>
+        <h1 ref={projectRef} className='title'>My <span className='text-blue-700'>{strings[bahasa].project}</span></h1>
         <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:gap-10'>
           {
             projects.map((project) => {
@@ -51,6 +50,7 @@ const Main = () => {
           }
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

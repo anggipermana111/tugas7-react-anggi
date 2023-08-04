@@ -7,11 +7,12 @@ import Koperasi from '../public/koperasi.png'
 import Movie from '../public/movie.png'
 import Inventory from '../public/inventory.png'
 import Tiket from '../public/tiket.png'
-import Footer from './components/Footer';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 export const ThemeContext = createContext({
-  theme: null,
-  setTheme: () => { },
+  // theme: null,
+  // setTheme: () => { },
 });
 
 const projects = [
@@ -74,12 +75,15 @@ const strings = {
 const App = () => {
   const [theme, setTheme] = useState("dark");
   const [bahasa, setBahasa] = useState('en')
+  const projectRef = useRef(null);
+  useEffect(()=>{
+    console.log("Berhasil mengubah tema menjadi",theme=='dark'?"Gelap":"Terang");
+  },[theme]);
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, projects, strings, bahasa, setBahasa }}>
-      <div className={`body-${theme}`}>
+    <ThemeContext.Provider value={{ theme, setTheme, projects, strings, bahasa, setBahasa, projectRef }}>
+      <div className={`body ${theme} flex flex-col h-screen`}>
         <Header />
         <Main />
-        <Footer />
       </div>
     </ThemeContext.Provider>
   )
